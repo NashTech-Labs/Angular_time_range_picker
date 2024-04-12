@@ -1,0 +1,48 @@
+<h1>Angular Multi Step Form With Validation</h1>
+<form [formGroup]="firstFormGroup">
+    <div>
+        <mat-label class="form-label" data-testid="mabl-date-label">Name</mat-label>
+    </div>
+        <mat-form-field class="selector" appearance="fill">
+          <input matInput formControlName="name"/>
+        </mat-form-field>
+
+    <div>
+        <mat-label class="form-label" data-testid="mabl-date-label">Address</mat-label>
+    </div>
+        <mat-form-field class="selector" appearance="fill">
+          <textarea matInput formControlName="address"></textarea>
+        </mat-form-field>
+
+    <div>
+        <mat-label class="form-label" data-testid="mabl-date-label">Age</mat-label>
+    </div>
+        <mat-form-field class="selector" appearance="fill">
+          <input matInput formControlName="age"/>
+        </mat-form-field>
+
+<div class="hour">
+  <div>
+      <mat-label class="form-label" data-testid="mabl-date-label">Hours</mat-label>
+  </div>
+      <mat-form-field class="selector" appearance="fill">
+          <mat-select class="input-box" formControlName="startTime" #startTimeSelect>
+              <mat-option *ngFor="let hour of hours; let i = index"  [disabled]="i === 24" [value]="hour">{{ hour }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <span style="padding-right: 49px; position: relative; top:-6px">{{ "–" }}</span>
+      <mat-form-field class="selector" appearance="fill">
+          <mat-select class="input-box" formControlName="endTime" #endTimeSelect>
+              <mat-option *ngFor="let hour of hours; let i = index"  [disabled]="i === 0" [value]="hour">{{ hour }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <button matSuffix mat-icon-button (click)="openBothDropdowns()" class="watch-btn">
+          <mat-icon class="watch">
+              schedule
+          </mat-icon>
+      </button>
+  <mat-error class="error-message w-100" *ngIf="(firstFormGroup.get('endTime')?.errors ||
+  firstFormGroup.get('startTime')?.value===firstFormGroup.get('endTime')?.value)">Minimum hour duration should be 1 </mat-error>
+</div>
+<button mat-flat-button color="primary" (click)="onSubmit()" >Submit</button>
+</form>

@@ -1,0 +1,36 @@
+.form {
+    margin-top: 10px;
+}
+
+mat-form-field {
+    width: 500px;
+    margin-left: 20px;
+
+}
+
+button {
+    margin-left: 20px;
+}
+
+.hour-selector {
+    width: 122px;
+    height: 70px;
+    position: relative;
+    top: -8px;
+    ::ng-deep .mat-mdc-select-arrow svg {
+        display: none !important;
+        width: 30px !important;
+    }
+
+    ::ng-deep.mdc-text-field--filled {
+        --mdc-filled-text-field-active-indicator-height: 0;
+        --mdc-filled-text-field-focus-active-indicator-height: 0;
+    }
+    ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before{
+        border-bottom-color: transparent !important;
+    }
+}
+
+.watch-btn {
+    color: #5F6369;
+}
